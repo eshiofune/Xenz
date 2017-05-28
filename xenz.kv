@@ -1,0 +1,79 @@
+#:kivy 1.9.1
+
+<LongEdge>:
+    size: 50, self.parent.height
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<WideEdge>:
+    size: self.parent.width, 50
+    canvas:
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<Barrier>:
+    size: 200, 75
+    center: self.parent.center
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<Snake>:
+    size: 50, 50
+    canvas:
+        Ellipse:
+            source: self.src
+            pos: self.pos
+            size: self.size
+
+<Egg>:
+    size: 30, 30
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<Board>:
+    ledge: LeftEdge
+    redge: RightEdge
+    tedge: TopEdge
+    bedge: BottomEdge
+    barr: barrier
+    snake: snake
+    egg: egg
+    width: 500
+    height: 450
+    LongEdge:
+        id: LeftEdge
+        x: root.x
+        top: root.top - 100
+    LongEdge:
+        id: RightEdge
+        x: root.width - self.width
+        top: root.top - 100
+    WideEdge:
+        id: TopEdge
+        x: root.x
+        top: root.top
+    WideEdge:
+        id: BottomEdge
+        x: root.x
+        top: 0 + self.height
+    Barrier:
+        id: barrier
+    Snake:
+        id: snake
+    Egg:
+        id: egg
+    Label:
+        text: str(root.score)
+        x: root.width - self.width
+        top: root.top + 25
+        bold: True
+        font_size: 50
+        color: (0, 1, 0, 0.5)
+
